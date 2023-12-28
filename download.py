@@ -5,7 +5,7 @@ import itertools
 import os
 import urllib.request, urllib.error, urllib.parse
 import time
-import futures as futures  # In Python 3 we can use "import concurrent.futures as futures"
+import concurrent.futures as futures
 
 current_working_directory = os.path.dirname(os.path.abspath(__file__))
 archive_folder = os.path.join(current_working_directory, "j-archive")
@@ -73,7 +73,7 @@ def download_page(page):
         response = urllib.request.urlopen(url)
         if response.code == 200:
             print("Downloading %s" % url)
-            html = response.read()
+            html = response.read().decode('utf-8')
         else:
             print("Invalid URL: %s" % url)
     except urllib.error.HTTPError:
@@ -83,8 +83,8 @@ def download_page(page):
 
 def save_file(html, filename):
     try:
-        with open(filename, 'w') as f:
-            f.write(html)
+        with open(filename, 'wb') as f:
+            f.write(html.encode('utf-8'))
     except IOError:
         print("Couldn't write to file %s" % filename)
 
