@@ -1,31 +1,27 @@
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
-Jeopardy parser
-===============
+# Jeopardy parser
 
-Quick note: this project does **not** use semantic versioning (`python parser.py --version` outputs the last updated date of the script).
+Quick note: this project does **not** use semantic versioning (`python parse.py --version` outputs the last updated date of the script).
 
-What is this?
--------------
+## What is this?
 
-This is a Python script to extract [Jeopardy!] clues from the [J! Archive] website and dump them into a SQLite database for use elsewhere (no particular application is intended). Python 2.7.* and SQLite 3.7.* on *nix have been tested and confirmed to work (requires BeautifulSoup 4 and the lxml parser).
+This is a Python script to extract [Jeopardy!] clues from the [J! Archive] website and dump them into a SQLite database for use elsewhere (no particular application is intended). Python 2.7._ and SQLite 3.7._ on \*nix have been tested and confirmed to work (requires BeautifulSoup 4 and the lxml parser).
 
-  [Jeopardy!]:http://www.jeopardy.com/
-  [J! Archive]:http://j-archive.com/
+[Jeopardy!]: http://www.jeopardy.com/
+[J! Archive]: http://j-archive.com/
 
-Quick start
------------
+## Quick start
 
 ```bash
 git clone git://github.com/whymarrh/jeopardy-parser.git
 cd jeopardy-parser
 pip install -r requirements.txt
 python download.py
-python parser.py
+python parse.py
 ```
 
-How long will all this take?
-----------------------------
+## How long will all this take?
 
 There are two important steps:
 
@@ -36,8 +32,7 @@ The first step, downloading, will depend on the machine: the download script wil
 
 The complete download of the game files is ~350MB, and the resulting database file is ~50MB (although these numbers are qucikly outdated as the number of games increases).
 
-Querying the database
----------------------
+## Querying the database
 
 The database is split into 5 tables:
 
@@ -82,7 +77,6 @@ JOIN categories ON classifications.category_id = categories.id
 ;
 ```
 
-License
--------
+## License
 
 This software is released under the MIT License. See the [LICENSE.md](LICENSE.md) file for more information.
